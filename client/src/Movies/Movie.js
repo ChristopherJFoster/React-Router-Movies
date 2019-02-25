@@ -27,29 +27,35 @@ export default class Movie extends Component {
       });
   };
   // Uncomment this code when you're ready for the stretch problems
-  // componentWillReceiveProps(newProps){
-  //   if(this.props.match.params.id !== newProps.match.params.id){
+  // componentWillReceiveProps(newProps) {
+  //   if (this.props.match.params.id !== newProps.match.params.id) {
   //     this.fetchMovie(newProps.match.params.id);
   //   }
   // }
 
-  // saveMovie = () => {
-  //   const addToSavedList = this.props.addToSavedList;
-  //   addToSavedList(this.state.movie)
-  // }
+  saveMovie = () => {
+    console.log(this.props.addToSavedList);
+    const addToSavedList = this.props.addToSavedList;
+    addToSavedList(this.state.movie);
+  };
 
   render() {
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
     }
     return (
-      <MovieCard
-        id={this.state.movie.id}
-        title={this.state.movie.title}
-        director={this.state.movie.director}
-        metascore={this.state.movie.metascore}
-        stars={this.state.movie.stars}
-      />
+      <div>
+        <MovieCard
+          id={this.state.movie.id}
+          title={this.state.movie.title}
+          director={this.state.movie.director}
+          metascore={this.state.movie.metascore}
+          stars={this.state.movie.stars}
+        />
+        <button onClick={() => this.saveMovie()}>
+          Add movie to saved list
+        </button>
+      </div>
     );
   }
 }
