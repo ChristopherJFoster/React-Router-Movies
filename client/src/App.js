@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
@@ -23,6 +23,8 @@ export default class App extends Component {
     return (
       <div>
         <SavedList list={this.state.savedList} />
+        {/* I might not have done this according to best practices, but I figured out how to change "/" to "/movielist" automatically: */}
+        <Route exact path="/" component={() => <Redirect to="/movielist" />} />
         <Route exact path="/movielist" component={MovieList} />
         <Route
           path="/movielist/:id"
