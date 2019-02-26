@@ -1,14 +1,6 @@
 import React from "react";
 
-const MovieCard = ({
-  addToSavedList,
-  movie,
-  id,
-  title,
-  director,
-  metascore,
-  stars
-}) => {
+const MovieCard = ({ title, director, metascore, stars }) => {
   return (
     <div className="movie-card">
       <h2>{title}</h2>
