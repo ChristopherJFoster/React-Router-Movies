@@ -13,7 +13,11 @@ export default class App extends Component {
   }
 
   addToSavedList = movie => {
+    console.log("savedList:", this.state.savedList);
+    console.log("movie:", movie);
+    console.log("state check", this.state.savedList.includes(movie));
     const savedList = this.state.savedList;
+    console.log("var check", savedList.includes(movie));
     // Added logic so the user cannot save a movie twice:
     if (savedList.includes(movie)) {
       alert(
@@ -29,7 +33,11 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <SavedList list={this.state.savedList} />
+        <Route
+          render={routeProps => (
+            <SavedList {...routeProps} list={this.state.savedList} />
+          )}
+        />
         {/* I might not have done this according to best practices, but I figured out how to redirect "/" to "/movielist" automatically: */}
         <Route exact path="/" component={() => <Redirect to="/movielist" />} />
         <Route exact path="/movielist" component={MovieList} />

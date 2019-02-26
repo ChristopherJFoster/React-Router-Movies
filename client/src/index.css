@@ -45,6 +45,7 @@ body {
 }
 .saved-active {
   color: blue;
+  background: lemonchiffon;
   border: 1px solid grey;
   padding: 5px;
 }
