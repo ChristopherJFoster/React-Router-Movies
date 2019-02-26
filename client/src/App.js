@@ -16,7 +16,9 @@ export default class App extends Component {
     const savedList = this.state.savedList;
     // Added logic so the user cannot save a movie twice:
     if (savedList.includes(movie)) {
-      alert("You already saved that movie!");
+      alert(
+        `No matter how much you like ${movie.title}, you can only save it once!`
+      );
       return;
     } else if (!savedList.includes(movie)) {
       savedList.push(movie);
