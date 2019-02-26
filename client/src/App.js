@@ -13,17 +13,22 @@ export default class App extends Component {
   }
 
   addToSavedList = movie => {
-    console.log("test");
     const savedList = this.state.savedList;
-    savedList.push(movie);
-    this.setState({ savedList });
+    // Added logic so the user cannot save a movie twice:
+    if (savedList.includes(movie)) {
+      alert("You already saved that movie!");
+      return;
+    } else if (!savedList.includes(movie)) {
+      savedList.push(movie);
+      this.setState({ savedList });
+    }
   };
 
   render() {
     return (
       <div>
         <SavedList list={this.state.savedList} />
-        {/* I might not have done this according to best practices, but I figured out how to change "/" to "/movielist" automatically: */}
+        {/* I might not have done this according to best practices, but I figured out how to redirect "/" to "/movielist" automatically: */}
         <Route exact path="/" component={() => <Redirect to="/movielist" />} />
         <Route exact path="/movielist" component={MovieList} />
         <Route
