@@ -13,18 +13,15 @@ export default class App extends Component {
   }
 
   addToSavedList = movie => {
-    console.log("savedList:", this.state.savedList);
-    console.log("movie:", movie);
-    console.log("state check", this.state.savedList.includes(movie));
     const savedList = this.state.savedList;
-    console.log("var check", savedList.includes(movie));
+    const stringList = savedList.map(item => JSON.stringify(item));
+    const stringMovie = JSON.stringify(movie);
     // Added logic so the user cannot save a movie twice:
-    if (savedList.includes(movie)) {
+    if (stringList.includes(stringMovie)) {
       alert(
         `No matter how much you like ${movie.title}, you can only save it once!`
       );
-      return;
-    } else if (!savedList.includes(movie)) {
+    } else {
       savedList.push(movie);
       this.setState({ savedList });
     }
