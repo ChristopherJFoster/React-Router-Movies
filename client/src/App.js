@@ -21,8 +21,7 @@ export default class App extends Component {
       alert(
         `No matter how much you like ${movie.title}, you can only save it once!`
       );
-      return;
-    } else if (!stringList.includes(stringMovie)) {
+    } else {
       savedList.push(movie);
       this.setState({ savedList });
     }
