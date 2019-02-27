@@ -14,9 +14,7 @@ export default class App extends Component {
 
   addToSavedList = movie => {
     const savedList = this.state.savedList;
-    const stringList = savedList.map(item => {
-      return JSON.stringify(item);
-    });
+    const stringList = savedList.map(item => JSON.stringify(item));
     const stringMovie = JSON.stringify(movie);
     // Added logic so the user cannot save a movie twice:
     if (stringList.includes(stringMovie)) {

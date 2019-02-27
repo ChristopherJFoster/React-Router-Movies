@@ -20,9 +20,7 @@ addToSavedList = movie => {
 addToSavedList = movie => {
   const savedList = this.state.savedList;
   // JSON.stringify savedList and movie for an accurate comparison:
-  const stringList = savedList.map(item => {
-    return JSON.stringify(item);
-  });
+  const stringList = savedList.map(item => JSON.stringify(item));
   const stringMovie = JSON.stringify(movie);
   // Using the JSON.stringified variable, this conditional works as intended:
   if (stringList.includes(stringMovie)) {
